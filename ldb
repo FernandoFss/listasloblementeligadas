@@ -1,0 +1,75 @@
+//LISTAS DOBLEMENTE LIGADAS by Flores Flores Fernando
+
+#include<stdio.h>
+#include<stdlib.h>
+
+//ESTRUCTURAS
+
+struct elemListaDL{
+	int dato;
+	struct elemListaDL *anterior;
+	struct elemListaDL *siguiente;
+};
+typedef struct elemListaDL nodo;
+
+struct tipolistaDL{
+	nodo *ini;
+	nodo *fin;
+	int tam;
+};
+typedef struct tipolistaDL Lista;
+
+
+//FUNCIONES GG
+
+void creaLDL(Lista *lista){
+	lista->ini=NULL;
+	lista->ini=NULL;
+	lista->tam=0;
+}
+
+
+nodo *creaNodo(int dato){
+	nodo *nuevoNodo;
+	nuevoNodo=(nodo*)malloc(sizeof(nodo));
+	if(nuevoNodo!=NULL){
+		nuevoNodo->dato=dato;
+		nuevoNodo->siguiente=NULL;
+		nuevoNodo->anterior=NULL;
+	}
+	return nuevoNodo;
+}
+
+
+int inserListaVaciaDL(Lista *lista,int dato){
+	nodo *nuevoNodo;
+	
+	nuevoNodo=creaNodo(dato);
+	if(nuevoNodo==NULL){
+		return 1;
+	}
+	
+	nuevoNodo->anterior=NULL;
+	nuevoNodo->siguiente=NULL;
+	lista->ini=nuevoNodo;
+	lista->fin=nuevoNodo;
+	lista->tam++;
+	return 0;	
+}
+
+
+int insertarInicioDL(Lista *lista,int dato){
+	nodo *nuevoNodo;
+nuevoNodo=creaNodo(dato);
+	if(nuevoNodo==NULL){
+		return 1;
+	}
+nuevoNodo->siguiente =lista->ini;
+lista->ini->anterior=nuevoNodo;
+lista->ini=nuevoNodo;
+lista->tam++;
+return 0;
+}
+
+
+
